@@ -6,13 +6,14 @@ import com.example.messaging.restapidemo.annotation.Log;
 
 @Component
 public class RestApiEventsListener  implements ApplicationListener<ApplicationEvent>{
+	
 	private static final String LATEST = "/currency/latest";
 	
 	
-
+	
 	@Log(printParamsValues=true)
 	public void onApplicationEvent(ApplicationEvent event) {
-		
+
 	 }
 
 }
