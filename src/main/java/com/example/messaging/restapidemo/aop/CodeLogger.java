@@ -17,7 +17,7 @@ public class CodeLogger {
 	private static final String NEXT_LINE = "\n";
 	private static final Logger log = LoggerFactory.getLogger(CodeLogger.class);
 			
-	@Pointcut("execution(@com.example.messaging.restapidemo.annotation.Log * com.example.messaging.*.*(..)) && @annotation(codeLog)")
+	@Pointcut("execution(@com.example.messaging.restapidemo.annotation.Log * com.example.messaging..*.*(..)) && @annotation(codeLog)")
 	public void codeLogger(Log codeLog){}
 	
 	@Before("codeLogger(codeLog)")
