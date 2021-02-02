@@ -22,13 +22,16 @@ public class CurrencyService {
 		this.publisher = publisher;
 	}
 	
-	public void saveRates(Rate[] rates, Date date){
+public void saveRates(Rate[] rates, Date date){
+	System.out.println("saveRates");
 		Arrays.stream(rates).forEach(rate -> repository.save(new Rate(rate.getCode(),rate.getRate(),date)));
 	}
 	
 	@Transactional
 	public void saveRate(Rate rate){
+		System.out.println("invoke CurrencyService.saveRate");
 		repository.save(new Rate(rate.getCode(),rate.getRate(),rate.getDate()));
 		publisher.publishEvent(new CurrencyEvent(this,rate));
 	}
 }
+	

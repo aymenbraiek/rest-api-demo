@@ -20,6 +20,7 @@ import com.example.messaging.restapidemo.domain.CurrencyConversion;
 import com.example.messaging.restapidemo.domain.CurrencyExchange;
 import com.example.messaging.restapidemo.domain.Rate;
 import com.example.messaging.restapidemo.services.CurrencyConversionService;
+import com.example.messaging.restapidemo.services.CurrencyService;
 
 @RestController
 @RequestMapping("/currency")
@@ -29,6 +30,8 @@ private static final Logger log = LoggerFactory.getLogger(CurrencyController.cla
 	
 	@Autowired 
 	CurrencyConversionService service;
+	@Autowired
+	CurrencyService servicecc;
 	
 	@RequestMapping("/latest")
 	public ResponseEntity<CurrencyExchange> getLatest(@RequestParam(name="base",defaultValue=CurrencyExchange.BASE_CODE)String base) throws Exception{
@@ -51,7 +54,7 @@ private static final Logger log = LoggerFactory.getLogger(CurrencyController.cla
 		try{
 			final Date date = new SimpleDateFormat("yyyy-MM-dd").parse(currencyExchange.getDate());
 			final Rate[] rates = currencyExchange.getRates();
-			service.saveRates(rates,date);
+			servicecc.saveRates(rates,date);
 		}catch(Exception ex){
 			log.error(ex.getMessage());
 			throw ex;

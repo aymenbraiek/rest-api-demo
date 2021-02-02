@@ -7,7 +7,7 @@ import com.example.messaging.restapidemo.domain.Rate;
 public class CurrencyEvent extends ApplicationEvent {
 
 	/**
-	 * 
+	 * closes #4 not 
 	 */
 	private static final long serialVersionUID = 1L;
 	
