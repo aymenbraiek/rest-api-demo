@@ -39,6 +39,11 @@ public class CurrencyConversion {
 	}
 	public void setTotal(float total) {
 		this.total = total;
+	}
+
+	@Override
+	public String toString() {
+		return "CurrencyConversion [base=" + base + ", code=" + code + ", amount=" + amount + ", total=" + total + "]";
 	}	
 
 }

@@ -14,6 +14,7 @@ import com.example.messaging.restapidemo.annotation.ToUpper;
 import com.example.messaging.restapidemo.domain.CurrencyConversion;
 import com.example.messaging.restapidemo.domain.CurrencyExchange;
 import com.example.messaging.restapidemo.domain.Rate;
+import com.example.messaging.restapidemo.exception.BadCodeRuntimeException;
 import com.example.messaging.restapidemo.repository.RateRepository;
 
 
@@ -35,7 +36,7 @@ public class CurrencyConversionService {
 			codeRate = repository.findByDateAndCode(new Date(), code);
 		
 		if(null == codeRate || null == baseRate)
-			throw new Exception("Bad Code Base.");
+			throw new BadCodeRuntimeException("Bad Code Base, unknown code:" + base, new CurrencyConversion(base,code,amount,-1F));
 		
 		return new CurrencyConversion(base,code,amount,(codeRate.getRate()/baseRate.getRate()) * amount);
 	}
